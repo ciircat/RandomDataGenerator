@@ -1,0 +1,23 @@
+header
+file_type,start,end,region
+priceList,2022-01-01T00:00:00+01:00,2023-04-30T23:59:59+01:00,United Kingdom
+
+price_item
+item_no,organisation_id,qty,item_price,currency,lead_time,bulk,unit
+01-0790906-00,Airpart,1,485.86,GBP,1,0,ks
+01-0772102-10,Airpart,1,335.30,GBP,7,0,ks
+01-0772102-15,Airpart,1,335.30,GBP,1,0,ks
+46151,Airpart,1,399,GBP,3,0,ks
+46157,Airpart,1,345,GBP,3,0,ks
+46162,Airpart,1,168.54,GBP,4,0,ks
+46124,Airpart,1,409.70,GBP,2,0,ks
+42525,Airpart,1,29.69,GBP,5,0,ks
+42526,Airpart,1,32.93,GBP,5,0,ks
+42527,Airpart,1,485.86,GBP,5,0,ks
+42528,Airpart,1,70,GBP,5,0,ks
+42535,Airpart,1,41.19,GBP,4,0,ks
+42536,Airpart,1,35.90,GBP,4,0,ks
+42537,Airpart,1,44.99,GBP,4,0,ks
+42543,Airpart,1,44.99,GBP,13,0,ks
+86255,Airpart,1,115.14,GBP,7,0,ks
+149-NL,Airpart,1,883.93,GBP,7,0,ks

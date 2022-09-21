@@ -1,0 +1,32 @@
+header
+file_type,date_created
+items,2022-01-01T00:14:30+01:00
+
+item
+item_no,description,storage_cost,width,length,height,unit,category,abc_category
+01-0790906-00,Parmetheus G3 Par 46 Landing Light 14-28VDC,0,,,,ks,lights,
+01-0772102-10,Parmetheus G3 Par 36 Landing Light 14-28VDC,0,,,,ks,lights,
+01-0772102-15,Parmetheus01: G3 Par 36 Taxi Light 14-28VDC,0,,,,ks,lights,
+46151,Alcor CHT Gauge 2 1/4 Type J,0,,,,ks,instruments,
+46157,Alcor Cht/Cht Dual Ind 3 1/8 Type J,0,,,,ks,instruments,
+46162,Alcor Egt Alcor EGT Type K Meter w/ Green Arc; 2-1/4 Type K; Scale 1650F,0,,,,ks,instruments,
+46124,Alcor Tit/Tit Dual Ind 2 1/4 Type K,0,,,,ks,instruments,
+42525,Alcor EGT Type K Extension Lead; 90,0,,,,ks,connectors,
+42526,Alcor EGT Type K Lead Extension; 144,0,,,,ks,connectors,
+42527,Alcor EGT Type K Lead Extension; 240,0,,,,ks,connectors,
+42528,Alcor EGT Type K Lead Extension; 216 C/A,0,,,,ks,connectors,
+42535,Alcor CHT Type J Lead Extension; 90,0,,,,ks,connectors,
+42536,Alcor CHT Type J Lead Extension; 144,0,,,,ks,connectors,
+42537,Alcor CHT Type J Lead Extension; 240,0,,,,ks,connectors,
+42543,Alcor CHT Type J Lead Extension; 216,0,,,,ks,connectors,
+42523,Alcor EGT Lead Stagger Adapter,0,,,,ks,connectors,
+35311,Alcor CHT Heater for Alcal 2000,0,,,,ks,heaters,
+35309,Alcor HEATER ASSEMBLY; EGT,0,,,,ks,heaters,
+321440,Insight 14 Ft Harness for 4 Cylinder,0,,,,ks,harnesses,
+331440,Insight 14 Ft Harness for 4 Cylinder Turbo,0,,,,ks,harnesses,
+321460,Insight 14 Ft Harness for 6 Cylinder,0,,,,ks,harnesses,
+331460,Insight 14 Ft Harness for 6 Cylinder Turbo,0,,,,ks,harnesses,
+K10-00280-01,EFIS Garmin G5 Certified,0,,,,ks,instruments,
+86255,EGT PROBES MODEL A CLAMP TYPE,0,,,,ks,probes,
+149-NL,Sky-Tec 149-NL,0,,,,ks,starters,
+

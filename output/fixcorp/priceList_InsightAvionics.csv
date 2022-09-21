@@ -1,0 +1,10 @@
+header
+file_type,start,end,region
+priceList,2022-02-26T00:00:00+01:00,2023-06-25T23:59:59+01:00,United States
+
+price_item
+item_no,organisation_id,qty,item_price,currency,lead_time,bulk,unit
+"321440",Insight,1,273.0,USD,5,0,ks
+"331440",Insight,1,325.0,USD,3,0,ks
+"321460",Insight,1,325.0,USD,5,0,ks
+"331460",Insight,1,364.0,USD,2,0,ks

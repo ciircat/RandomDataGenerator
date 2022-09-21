@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Good Thymes Virtual Grocery</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" type="text/css" media="all"
+          href="../../css/gtvg.css" th:href="@{/css/gtvg.css}" />
+</head>
+
+<body>
+<form id="data-shift-page" action="#"  th:action="@{/dateShiftPage}" method="get">
+    <input class="btn btn-primary" type="submit" name="submit" value="Šoupač dat">
+</form>
+
+<form id="registration-form" action="#"  th:action="@{/files}" th:object="${filesPropertiesCommand}" method="post">
+    <div class="form-group">
+        <label for="initial-seed">Initial Seed:</label>
+        <input th:field="*{initialSeed}" required class="form-control" type="number" id="initial-seed" name="initial-seed">
+    </div>
+    <br/>
+    <div class="form-group">
+        <label for="suppliers">Number of suppliers</label>
+        <input th:field="*{numberOfSuppliers}" required class="form-control" type="number" id="suppliers" name="suppliers">
+    </div>
+    <div class="form-group">
+        <label for="currencies">Number of currencies and items</label>
+        <input th:field="*{numberOfCurrenciesAndItems}" required class="form-control" type="number" id="currencies" name="currencies">
+    </div>
+    <br>
+    <div class="form-group">
+        <label for="priceListValidFrom">Price list valid from</label>
+        <input th:field="*{priceListValidFrom}" required class="form-control" type="text" id="priceListValidFrom" name="priceListValidFrom">
+    </div>
+    <div class="form-group">
+        <label for="priceListValidTo">Price list valid to</label>
+        <input th:field="*{priceListValidTo}" required class="form-control" type="text" id="priceListValidTo" name="priceListValidTo">
+    </div>
+    <br>
+    <div class="form-group">
+        <label for="priceListRegion">Region of price list</label>
+        <input th:field="*{priceListRegion}" required class="form-control" type="text" id="priceListRegion" name="priceListRegion">
+    </div>
+    <br>
+    <div class="form-group">
+        <label for="numberOfConsumptions">Number of Consumptions</label>
+        <input th:field="*{numberOfConsumptions}" required class="form-control" type="number" id="numberOfConsumptions" name="numberOfConsumptions">
+    </div>
+    <br>
+    <div class="form-group">
+        <label for="initialConsumption">DateTime of initial consumption</label>
+        <input th:field="*{initialConsumption}" required class="form-control" type="text" id="initialConsumption" name="initialConsumption">
+    </div>
+    <br>
+    <div class="form-group">
+        <label for="lastConsumption">DateTime of last consumption</label>
+        <input th:field="*{lastConsumption}" required class="form-control" type="text" id="lastConsumption" name="lastConsumption">
+    </div>
+    <br>
+    <div class="form-group">
+        <label for="warehouseName">Name Of Warehouse</label>
+        <input th:field="*{warehouseName}" required class="form-control" type="text" id="warehouseName" name="warehouseName">
+    </div>
+    <br>
+    <div class="form-group">
+        <label for="numberOfOrders">Number of orders</label>
+        <input th:field="*{numberOfOrders}" required class="form-control" type="number" id="numberOfOrders" name="numberOfOrders">
+    </div>
+    <br>
+    <div class="form-group">
+        <label for="ordersFrom">Orders randomly chosen starting from</label>
+        <input th:field="*{ordersFrom}" required class="form-control" type="text" id="ordersFrom" name="ordersFrom">
+    </div>
+    <br>
+    <div class="form-group">
+        <label for="ordersTo">Orders randomly chosen before</label>
+        <input th:field="*{ordersTo}" required class="form-control" type="text" id="ordersTo" name="ordersTo">
+    </div>
+    <br>
+
+    <input class="btn btn-primary" type="submit" name="submit" value="Odeslat data">
+    <br/>
+</form>
+
+</body>
+
+</html>

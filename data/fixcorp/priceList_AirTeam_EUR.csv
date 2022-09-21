@@ -1,0 +1,12 @@
+header
+file_type,start,end,region
+priceList,2022-01-01T00:00:00+01:00,2023-04-30T23:59:59+01:00,Europe
+
+price_item
+item_no,organisation_id,qty,item_price,currency,lead_time,bulk,unit
+K10-00280-01,ATEU,1,2288,EUR,5,0,ks
+86255,ATEU,1,119.60,EUR,4,0,ks
+01-0790906-00,ATEU,1,430.50,EUR,90,0,ks
+01-0772102-10,ATEU,1,314.10,EUR,60,0,ks
+01-0772102-15,ATEU,1,314.10,EUR,90,0,ks
+149-NL,ATEU,1,1188,EUR,5,0,ks

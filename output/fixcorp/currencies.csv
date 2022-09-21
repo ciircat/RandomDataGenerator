@@ -1,0 +1,10 @@
+header
+file_type,date_created,region,base_currency_code,base_currency_name
+currencies,2022-07-29T00:00:00+02:00,Ceska republika,CZK,Base currency CZK
+
+currency
+currency_code,currency_name,exchange_rate
+EUR,Euro,25.1
+USD,American Dollar,22.9
+GBP,British Pound,60.0
+CNY,China Yuan,12.0

@@ -1,0 +1,12 @@
+header
+file_type,date_created,region
+suppliers,2022-02-26T00:00:00+01:00,Ceska republika
+
+supplier
+organisation_id,company_id,company_name,company_description,vat_id,website
+Airpart,10000000,Airpart Supply Ltd,uk,123,https://www.airpart.co.uk
+ACS,10000001,Aircraft Supply,usa,456,https://www.aircraftsupply.com
+Insight,10000002,Insight Avionics,usa,879,http://www.insightavionics.com
+ATCZ,10000004,Air Team CZ,cz,101112,https://www.airteam.eu/cz
+ATEU,10000005,Air Team EU,eu,14789,https://www.airteam.eu/sk
+CHEEPO,100000666,CHEEPO inc.,eu,64789,https://www.cheepo.com

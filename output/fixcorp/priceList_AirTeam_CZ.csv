@@ -1,0 +1,13 @@
+header
+file_type,start,end,region
+priceList,2022-02-26T00:00:00+01:00,2023-06-25T23:59:59+01:00,Ceska republika
+
+price_item
+item_no,organisation_id,qty,item_price,currency,lead_time,bulk,unit
+"K10-00280-01",ATCZ,1,56513.0,CZK,4,0,ks
+"86255",ATCZ,1,2954.1,CZK,2,0,ks
+"01-0790906-00",ATCZ,1,10634.3,CZK,90,0,ks
+"01-0772102-10",ATCZ,1,7758.6,CZK,90,0,ks
+"01-0772102-15",ATCZ,1,7758.6,CZK,80,0,ks
+"149-NL",ATCZ,1,30343.0,CZK,1,0,ks
+"321460",ATCZ,1,442.0,USD,1,0,ks

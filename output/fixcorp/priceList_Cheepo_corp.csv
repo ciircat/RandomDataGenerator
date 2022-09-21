@@ -1,0 +1,13 @@
+header
+file_type,start,end,region
+priceList,2022-02-26T00:00:00+01:00,2022-09-21T23:59:59+01:00,United States
+
+price_item
+item_no,organisation_id,qty,item_price,currency,lead_time,bulk,unit
+"46151",CHEEPO,1,116.95,USD,2,0,ks
+"46157",CHEEPO,1,339.95,USD,2,0,ks
+"46162",CHEEPO,1,123.08,USD,2,0,ks
+"01-0772102-15",CHEEPO,1,10.08,USD,2,0,ks
+"149-NL",CHEEPO,1,10.08,USD,2,0,ks
+"149-NL",CHEEPO,2,9.0,USD,2,0,ks
+"321460",CHEEPO,1,10.08,USD,2,0,ks

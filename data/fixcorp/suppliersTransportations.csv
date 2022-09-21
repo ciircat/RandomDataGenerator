@@ -1,0 +1,14 @@
+header
+file_type,date_created,warehouse_name
+suppliersTransportations,2022-06-21T00:00:00+01:00,Warehouse_1
+
+supplier_transportation
+organisation_id,transportation_cost,currency
+ACS,2,USD
+Airpart,3,GBP
+CHEEPO,1,USD
+ATCZ,5,CZK
+ATEU,3,EUR
+Insight,6,USD
+
+

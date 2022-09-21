@@ -1,0 +1,26 @@
+header
+file_type,start,end,region
+priceList,2022-02-26T00:00:00+01:00,2023-06-25T23:59:59+01:00,United States
+
+price_item
+item_no,organisation_id,qty,item_price,currency,lead_time,bulk,unit
+"46151",ACS,1,216.95,USD,3,0,ks
+"46157",ACS,1,439.95,USD,3,0,ks
+"46162",ACS,1,223.08,USD,3,0,ks
+"46124",ACS,1,518.61,USD,3,0,ks
+"42525",ACS,1,37.98,USD,3,0,ks
+"42526",ACS,1,42.12,USD,3,0,ks
+"42527",ACS,1,89.65,USD,3,0,ks
+"42528",ACS,1,55.5,USD,3,0,ks
+"42535",ACS,1,52.68,USD,3,0,ks
+"42536",ACS,1,44.46,USD,3,0,ks
+"42537",ACS,1,57.72,USD,3,0,ks
+"42543",ACS,1,57.72,USD,3,0,ks
+"42523",ACS,1,7.02,USD,3,0,ks
+"35311",ACS,1,329.98,USD,3,0,ks
+"35309",ACS,1,342.0,USD,3,0,ks
+"321440",ACS,1,337.5,USD,3,0,ks
+"331440",ACS,1,270.0,USD,3,0,ks
+"321460",ACS,1,342.0,USD,3,0,ks
+"331460",ACS,1,460.0,EUR,1,0,ks
+"86255",ACS,1,99.35,USD,10,0,ks
