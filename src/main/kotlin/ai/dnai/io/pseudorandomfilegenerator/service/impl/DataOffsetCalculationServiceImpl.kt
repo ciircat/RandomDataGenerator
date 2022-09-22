@@ -20,6 +20,8 @@ import kotlin.io.path.exists
 @Service
 open class DataOffsetCalculationServiceImpl : DataOffsetCalculationService{
 
+    private val logger = KotlinLogging.logger { }
+
     override fun calculateOffset(startDate: String, datasetName: String): Long {
         val dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ssXXX")
         var startDate = startDate
@@ -28,13 +30,13 @@ open class DataOffsetCalculationServiceImpl : DataOffsetCalculationService{
         val file = files?.firstOrNull { it.name.startsWith("consumption") }
 
         if (file == null) {
-            //logger.warn("\"consumption.csv\" not found to calculate diff date, will select 30 days")todo: solve logger
+            logger.warn("\"consumption.csv\" not found to calculate diff date, will select 30 days")
             return 30L
         }
 
         if (startDate == null || startDate.isEmpty() || startDate.length < 10) {
             startDate = LocalDateTime.now().toString().substring(0, 10)
-            //logger.warn("env: \"START_DAY\" was empty or invalid, will select current day: $startDate")
+            logger.warn("startDate was empty or invalid, will select current day: $startDate")
         }
 
         val reader = FileReader(file).buffered()
