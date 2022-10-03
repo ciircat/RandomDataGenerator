@@ -6,6 +6,8 @@ class ItemResult constructor(
     var storageCost: Int,
     var category: String,
     var abcCategory: String,
-    var unit: String
+    var unit: String,
+    var basePriceMean: Double,
+    var basePriceStandardDeviation: Double
 ) {
 }

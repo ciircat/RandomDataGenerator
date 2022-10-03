@@ -12,42 +12,30 @@ import kotlin.random.nextLong
 @Service
 class WarehouseStateGenerator {
 
-    fun generateWarehouseStates(priceItems: List<PriceItemResult>,
-                                rng: Random,
-                                currencies: List<CurrencyResult>): List<WarehouseStateResult>{
+    fun generateWarehouseStates(items: List<ItemResult>,
+                                rng: Random): List<WarehouseStateResult>{
         val warehouseStateList = ArrayList<WarehouseStateResult>()
-        for (i in 0 until priceItems.size - 1){
-            warehouseStateList.add(this.generateWarehouseState(priceItems[i], rng, currencies))
+        for (i in items){
+            warehouseStateList.add(
+                this.generateWarehouseState(i, rng)
+            )
+
         }
         return warehouseStateList
     }
 
-    private fun generateWarehouseState(priceItemResult: PriceItemResult, rng: Random, currencies: List<CurrencyResult>): WarehouseStateResult {
+    private fun generateWarehouseState(item: ItemResult, rng: Random): WarehouseStateResult {
         val storeQuańtity = rng.nextLong(0L..1000L)
+        val javaRandom = java.util.Random()
         val minimumQuantity = if (storeQuańtity < 10) {0} else{rng.nextInt(0..10)}
         return WarehouseStateResult(
-            itemNumber = priceItemResult.itemNumber,
-            units = priceItemResult.units,
+            itemNumber = item.itemNumber,
+            units = item.unit,
             storeQuantity = storeQuańtity.toInt(),
             minimumQuantity = minimumQuantity,
             immediateConsumption = 0,
-            totalPrice = BigDecimal(storeQuańtity * priceItemResult.itemPrice.toLong() * this.getConversionRate(priceItemResult.currencyCode, currencies) )
-
+            totalPrice = BigDecimal(storeQuańtity * javaRandom.nextGaussian(item.basePriceMean,item.basePriceStandardDeviation) )
         )
     }
 
-    private fun getConversionRate(currencyCode: String, currencies: List<CurrencyResult>): Int{
-        var exchangeRate : Int = -1
-        if (currencyCode.equals("CZK")){
-            exchangeRate = 1
-        }else{
-            for (i in currencies){
-                if (i.currencyCode.equals(currencyCode)){
-                    exchangeRate =  i.exchangeRate.toInt()
-                }
-            }
-        }
-
-        return exchangeRate
-    }
 }

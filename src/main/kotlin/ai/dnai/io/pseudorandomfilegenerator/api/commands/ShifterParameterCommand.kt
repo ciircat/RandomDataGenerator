@@ -9,7 +9,6 @@ import java.time.format.DateTimeFormatter
 
 @Component
 class ShifterParameterCommand{
-    val dateTimeFormatService = DateTimeFormatServiceImpl()
-    var startDate : String = ZonedDateTime.now().format(dateTimeFormatService.getDateTimeFormatter()).toString()
+    var daysOffsetFromNow = 0
     var datasetName = "fixcorp"
 }

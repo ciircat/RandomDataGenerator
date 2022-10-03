@@ -1,74 +1,86 @@
 package ai.dnai.io.pseudorandomfilegenerator.service.FileGenerators
 
-import ai.dnai.io.pseudorandomfilegenerator.storage.csv.entity.CurrencyResult
-import ai.dnai.io.pseudorandomfilegenerator.storage.csv.entity.ItemResult
-import ai.dnai.io.pseudorandomfilegenerator.storage.csv.entity.PriceItemResult
-import ai.dnai.io.pseudorandomfilegenerator.storage.csv.entity.SupplierResult
+import ai.dnai.io.pseudorandomfilegenerator.storage.csv.entity.*
 import org.springframework.stereotype.Service
 import java.math.BigDecimal
+import java.time.Instant
 import kotlin.math.absoluteValue
 import kotlin.random.Random
 import kotlin.random.nextInt
+
 @Service
 class PriceListGenerator {
-    val priceItemResultList = ArrayList<PriceItemResult>()
+    fun generatePriceLists(
+        supplierResults: List<SupplierResult>,
+        itemResults: List<ItemResult>,
+        currencyResults: List<CurrencyResult>,
+        baseCurrencyCode: String,
+        rng: Random,
+        priceListValidFrom: Instant,
+        priceListValidTo: Instant,
+        priceListRegion: String
+    ) {
 
-    fun generatePriceLists(supplierResults: List<SupplierResult>,
-                           itemResults: List<ItemResult>,
-                           currencyResults: List<CurrencyResult>,
-                           moreThanOnePriceList: Boolean,
-                           baseCurrencyCode: String,
-                           rng: Random): List<PriceItemResult> {
-        if (moreThanOnePriceList) {
-            throw NotImplementedError("Not SUpported Yet")
-        } else {
-            for (i in 0 until currencyResults.size){
-
-                val organisationId = supplierResults.get(
-                    rng.nextInt(0 until supplierResults.size)
-                ).organisationId
-
-                priceItemResultList.add(this.generatePriceItemResult(rng = rng,
-                                                                     currencyCode = currencyResults[i].currencyCode,
-                                                                     organisationId = organisationId,
-                                                                     itemResult = itemResults[i],
-                                                                     forBaseCurrency = false,
-                                                                     currencyResults = currencyResults)
-                )
-            }
-            // price item pro base currency
-            priceItemResultList.add(this.generatePriceItemResult(rng = rng,
-                                                                 currencyCode = baseCurrencyCode,
-                                                                 organisationId = supplierResults.get(0).organisationId,
-                                                                 itemResult = itemResults[0],
-                                                                 forBaseCurrency = true,
-                                                                 currencyResults = currencyResults)
-            )
-
-            return priceItemResultList
+        val currencyListWithBaseCurrency = ArrayList<CurrencyResult>()
+        currencyListWithBaseCurrency.add(
+            CurrencyResult(currencyCode = baseCurrencyCode, currencyName = "base currency", exchangeRate = "1")
+        )
+        for (i in currencyResults) {
+            currencyListWithBaseCurrency.add(i)
         }
+
+        for (supplier in supplierResults) {
+            val numberOfPriceLists = rng.nextInt(1 until currencyListWithBaseCurrency.size)
+            for (x in 0 until numberOfPriceLists) {
+                supplier.priceLists.add(
+                    PriceListResult(
+                        startDate = priceListValidFrom.toString(),
+                        endDate = priceListValidTo.toString(),
+                        region = priceListRegion,
+                        priceItems = this.generatePriceItemResult(
+                            rng = rng,
+                            supplier = supplier,
+                            currency = currencyListWithBaseCurrency[x]
+                        )
+                    )
+                )
+
+            }
+        }
+
     }
 
-    private fun generatePriceItemResult(forBaseCurrency: Boolean, rng: Random, currencyCode: String, organisationId: String, itemResult: ItemResult, currencyResults: List<CurrencyResult>): PriceItemResult{
+    private fun generatePriceItemResult(
+        rng: Random,
+        currency: CurrencyResult,
+        supplier: SupplierResult,
+    ): List<PriceItemResult> {
+        val javaRandom = java.util.Random()
+        val priceItems = ArrayList<PriceItemResult>()
 
-        var itemPrice : BigDecimal? = null
-        var leadTime : Int? = null
-        if (forBaseCurrency){
-            itemPrice = BigDecimal(priceItemResultList[0].itemPrice.toLong() / currencyResults[0].exchangeRate.toLong())
-            leadTime = priceItemResultList[0].leadTime
-        }else{
-            itemPrice = BigDecimal(rng.nextInt().absoluteValue)
-            leadTime = rng.nextInt(1..10)
+
+        for (i in supplier.itemsForSaleList) {
+            priceItems.add(
+                PriceItemResult(
+                    itemNumber = i.itemNumber,
+                    organisationId = supplier.organisationId,
+                    minimumQuantityForGivenPrice = 1,
+                    itemPrice = BigDecimal(
+                        (javaRandom.nextGaussian(
+                            i.basePriceMean,
+                            i.basePriceStandardDeviation
+                        )) / currency.exchangeRate.toDouble()
+                    ),
+                    currencyCode = currency.currencyCode,
+                    leadTime = rng.nextInt(1..10),
+                    bulk = 0,
+                    units = i.unit
+
+                )
+            )
+
         }
-        return PriceItemResult(
-            itemNumber = itemResult.itemNumber,
-            organisationId = organisationId,
-            minimumQuantityForGivenPrice = 1,
-            itemPrice = itemPrice,
-            currencyCode = currencyCode,
-            leadTime = leadTime,
-            bulk = 0,
-            units = itemResult.unit
-        )
+        return priceItems
+
     }
 }

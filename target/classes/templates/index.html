@@ -21,12 +21,17 @@
     </div>
     <br/>
     <div class="form-group">
+        <label for="numberOfCurrencies">Number of currencies </label>
+        <input th:field="*{numberOfCurrencies}" required class="form-control" type="number" id="numberOfCurrencies" name="numberOfCurrencies">
+    </div>
+    <br>
+    <div class="form-group">
         <label for="suppliers">Number of suppliers</label>
         <input th:field="*{numberOfSuppliers}" required class="form-control" type="number" id="suppliers" name="suppliers">
     </div>
     <div class="form-group">
-        <label for="currencies">Number of currencies and items</label>
-        <input th:field="*{numberOfCurrenciesAndItems}" required class="form-control" type="number" id="currencies" name="currencies">
+        <label for="numberOfItems">Number of items</label>
+        <input th:field="*{numberOfItems}" required class="form-control" type="number" id="numberOfItems" name="numberOfItems">
     </div>
     <br>
     <div class="form-group">
@@ -79,7 +84,7 @@
     </div>
     <br>
 
-    <input class="btn btn-primary" type="submit" name="submit" value="Odeslat data">
+    <input class="btn btn-primary" type="submit" name="submit" value="Submit data">
     <br/>
 </form>
 

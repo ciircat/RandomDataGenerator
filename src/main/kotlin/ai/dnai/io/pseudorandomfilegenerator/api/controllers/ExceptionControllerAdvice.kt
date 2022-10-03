@@ -13,7 +13,7 @@ class ExceptionControllerAdvice {
     private val logger = KotlinLogging.logger { }
     @ExceptionHandler
     fun handleWrongConsumptionException(exception: GeneralCustomException): ResponseEntity<String>{
-        logger.error { exception.message }
+        logger.error { "${exception.message} , ${exception.stackTraceToString()}" }
         return ResponseEntity(exception.message, HttpStatus.BAD_REQUEST)
     }
 }

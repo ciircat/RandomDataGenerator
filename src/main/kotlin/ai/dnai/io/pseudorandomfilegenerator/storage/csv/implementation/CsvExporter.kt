@@ -62,7 +62,15 @@ open class CsvExporter : FileExporter {
         return csv.toString().toByteArray()
     }
 
-    override fun exportPriceList(priceList: PriceListResult): ByteArray {
+    override fun exportPriceLists(priceLists: List<PriceListResult>): List<ByteArray> {
+        val priceListsAsByteArray = ArrayList<ByteArray>()
+        for (priceList in priceLists){
+            priceListsAsByteArray.add(this.exportPriceList(priceList))
+        }
+        return priceListsAsByteArray
+    }
+
+    private fun exportPriceList(priceList: PriceListResult): ByteArray{
         val csv = StringBuilder()
         appendPriceListFileHeader(start = priceList.startDate, end = priceList.endDate, csv = csv)
         appendPriceListsHeader(csv = csv)

@@ -6,16 +6,20 @@
 </head>
 <body>
 <form id="index-page" action="#"  th:action="@{/}" method="get">
-    <input class="btn btn-primary" type="submit" name="submit" value="Zpět na generátor dat">
+    <input class="btn btn-primary" type="submit" name="submit" value="Back to date generator">
 </form>
 
 <form id="registration-form" action="#"  th:action="@{/offsetAndGetData}" th:object="${shifterParameterCommand}" method="post">
     <div class="form-group">
-        <label for="offset-by-days">Initial Seed:</label>
-        <input th:field="*{startDate}" required class="form-control" type="text" id="offset-by-days" name="offset-by-days">
+        <label for="daysOffset">Number of days offset from now:</label>
+        <input th:field="*{daysOffsetFromNow}" required class="form-control" type="number" id="daysOffset" name="daysOffset">
+    </div>
+    <div class="form-group">
+        <label for="datasetName">Name of dataset:</label>
+        <input th:field="*{datasetName}" required class="form-control" type="text" id="datasetName" name="datasetName">
     </div>
 
-    <input class="btn btn-primary" type="submit" name="submit" value="Odeslat data">
+    <input class="btn btn-primary" type="submit" name="submit" value="Submit data">
     <br/>
 </form>
 

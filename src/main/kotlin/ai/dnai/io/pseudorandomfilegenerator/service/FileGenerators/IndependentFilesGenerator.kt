@@ -10,8 +10,9 @@ import kotlin.random.nextInt
 
 @Service
 class IndependentFilesGenerator {
+    val STANDARD_DEVIATION_PERCENTAGE_OF_MEAN = 0.1
 
-    fun generateSuppliers(rng: Random, numberOfSuppliersToGenerate: Int): List<SupplierResult> {
+    fun generateSupplierResultList(rng: Random, numberOfSuppliersToGenerate: Int): List<SupplierResult> {
         val suppliers = ArrayList<SupplierResult>()
         for (i in 0 until numberOfSuppliersToGenerate) {
             suppliers.add(this.generateOrganisation(rng))
@@ -19,18 +20,18 @@ class IndependentFilesGenerator {
         return suppliers
     }
 
-    fun generateCurrencies(rng: Random, numberOfCurrenciesAndItemsToGenerate: Int): List<CurrencyResult> {
+    fun generateCurrencies(rng: Random, numberOfCurrenciesToGenerate: Int): List<CurrencyResult> {
         val currencies = ArrayList<CurrencyResult>()
-        for (i in 0 until numberOfCurrenciesAndItemsToGenerate) {
+        for (i in 0 until numberOfCurrenciesToGenerate) {
             currencies.add(this.generateCurrency(rng))
         }
 
         return currencies
     }
 
-    fun generateItems(rng: Random, numberOfCurrenciesAndItemsToGenerate: Int): List<ItemResult> {
+    fun generateItems(rng: Random, numberOfItemsToGenerate: Int): List<ItemResult> {
         val items = ArrayList<ItemResult>()
-        for (i in 0 until numberOfCurrenciesAndItemsToGenerate) {
+        for (i in 0 until numberOfItemsToGenerate) {
             items.add(this.generateItem(rng))
         }
 
@@ -57,13 +58,16 @@ class IndependentFilesGenerator {
     }
 
     private fun generateItem(rng: Random): ItemResult {
+        val mean = rng.nextLong().absoluteValue.toDouble()
         return ItemResult(
             itemNumber = rng.nextInt().absoluteValue.toString(),
             description = "description" + rng.nextInt(),
             storageCost = rng.nextInt().absoluteValue,
             category = "category" + rng.nextInt(),
             abcCategory = "abcCategory" + rng.nextInt(),
-            unit = "unit" + rng.nextInt()
+            unit = "unit" + rng.nextInt(),
+            basePriceMean = rng.nextLong().absoluteValue.toDouble(),
+            basePriceStandardDeviation = mean * STANDARD_DEVIATION_PERCENTAGE_OF_MEAN
         )
     }
 }

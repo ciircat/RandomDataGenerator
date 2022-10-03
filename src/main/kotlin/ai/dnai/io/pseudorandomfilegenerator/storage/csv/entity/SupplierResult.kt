@@ -8,4 +8,6 @@ class SupplierResult constructor(
     val vatId: String,
     val webside: String
 ) {
+    val itemsForSaleList = ArrayList<ItemResult>()
+    val priceLists = ArrayList<PriceListResult>()
 }

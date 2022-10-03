@@ -13,9 +13,16 @@ class DataShiftFascade @Autowired constructor(
     val dataOffsetCalculationService: DataOffsetCalculationService,
     val zipFileService: ZipFileService
 ) {
-    fun shiftData(files: Array<File>, startDate: String, datasetName: String) : ByteArray{
+    fun shiftData(files: Array<File>, startDate: String, datasetName: String): ByteArray {
+
         val offsetByDays = dataOffsetCalculationService.calculateOffset(startDate, datasetName)
-        dataShiftService.shiftData(files = files, offset = offsetByDays, datasetName = datasetName)
+
+        dataShiftService.shiftData(
+            files = files,
+            offset = offsetByDays,
+            datasetName = datasetName
+        )
+
         return zipFileService.zipFiles(datasetName)
     }
 }
