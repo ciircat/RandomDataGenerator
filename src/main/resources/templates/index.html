@@ -11,8 +11,12 @@
 
 <body>
 <form id="data-shift-page" action="#"  th:action="@{/dateShiftPage}" method="get">
-    <input class="btn btn-primary" type="submit" name="submit" value="Šoupač dat">
+    <input class="btn btn-primary" type="submit" name="submit" value="Data shift page">
 </form>
+<form id="advanced-generation-page" action="#"  th:action="@{/advancedFileGeneration}" method="get">
+    <input class="btn btn-primary" type="submit" name="submit" value="Advanced data generation">
+</form>
+
 
 <form id="registration-form" action="#"  th:action="@{/files}" th:object="${filesPropertiesCommand}" method="post">
     <div class="form-group">
@@ -29,6 +33,7 @@
         <label for="suppliers">Number of suppliers</label>
         <input th:field="*{numberOfSuppliers}" required class="form-control" type="number" id="suppliers" name="suppliers">
     </div>
+    <br>
     <div class="form-group">
         <label for="numberOfItems">Number of items</label>
         <input th:field="*{numberOfItems}" required class="form-control" type="number" id="numberOfItems" name="numberOfItems">

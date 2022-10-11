@@ -3,10 +3,16 @@ package ai.dnai.io.pseudorandomfilegenerator.entity.entities
 import ai.dnai.common.api.entity.Item
 import ai.dnai.common.api.entity.Supplier
 
-class SupplierWrapper {
-    val supplier: Supplier? = null
-    val mustSaleItems: List<Item> = ArrayList()
-    val additionalItems: List<Item> = ArrayList()
-    //val priceLists: List
+class SupplierWrapper constructor(
+    val commonApiSupplier: Supplier,
+
+){
+    var suppliedItemWrapperSet = HashSet<ItemWrapper>()
+    var priceListPeriods = ArrayList<PriceListPeriod>()
+
+    fun addItemWrapper(itemWrapper: ItemWrapper){
+        this.suppliedItemWrapperSet.add(itemWrapper)
+    }
+
 
 }

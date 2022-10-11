@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <title>Good Thymes Virtual Grocery</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <link rel="stylesheet" type="text/css" media="all"
+        href="../../css/gtvg.css" th:href="@{/css/gtvg.css}" />
+</head>
+
+<body>
+<form id="data-shift-page" action="#"  th:action="@{/dateShiftPage}" method="get">
+  <input class="btn btn-primary" type="submit" name="submit" value="Šoupač dat">
+</form>
+
+<form id="advanced-data-generation-form" action="#"  th:action="@{/generateAdvancedData}" th:object="${advancedFilesPropertiesCommand}" method="post">
+  <div class="form-group">
+    <label for="initial-seed">Initial Seed:</label>
+    <input th:field="*{initialSeed}" required class="form-control" type="number" id="initial-seed" name="initial-seed">
+  </div>
+  <div class="form-group">
+    <label for="numberOfItems">Number of items</label>
+    <input th:field="*{numberOfItems}" required class="form-control" type="number" id="numberOfItems" name="numberOfItems">
+  </div>
+  <br>
+  <div class="form-group">
+    <label for="basePriceStdAsPercentageOfMean">Base price std deviation as percentage of Mean</label>
+    <input th:field="*{basePriceStdAsPercentageOfMean}" required class="form-control" type="number" id="basePriceStdAsPercentageOfMean" name="basePriceStdAsPercentageOfMean">
+  </div>
+  <br>
+  <div class="form-group">
+    <label for="priceChangeCoefficientMeanPerYearForItemsWithIncreasingPriceTendency">Price Change coefficient mean per year for items with increasing price tendency</label>
+    <input th:field="*{priceChangeCoefficientMeanPerYearForItemsWithIncreasingPriceTendency}" required class="form-control" type="number" id="priceChangeCoefficientMeanPerYearForItemsWithIncreasingPriceTendency" name="priceChangeCoefficientMeanPerYearForItemsWithIncreasingPriceTendency">
+  </div>
+  <br>
+  <div class="form-group">
+    <label for="priceChangeCoefficientStdPerYearForItemsWithIncreasingPriceTendency">Price Change coefficient std per year for items with increasing price tendency</label>
+    <input th:field="*{priceChangeCoefficientStdPerYearForItemsWithIncreasingPriceTendency}" required class="form-control" type="number" id="priceChangeCoefficientStdPerYearForItemsWithIncreasingPriceTendency" name="priceChangeCoefficientStdPerYearForItemsWithIncreasingPriceTendency">
+  </div>
+  <br>
+  <div class="form-group">
+    <label for="priceChangeCoefficientMeanPerYearForItemsWithDecreasingPriceTendency">Price Change coefficient mean per year for items with Decreasing price tendency</label>
+    <input th:field="*{priceChangeCoefficientMeanPerYearForItemsWithDecreasingPriceTendency}" required class="form-control" type="number" id="priceChangeCoefficientMeanPerYearForItemsWithDecreasingPriceTendency" name="priceChangeCoefficientMeanPerYearForItemsWithIncreasingPriceTendency">
+  </div>
+  <br>
+  <div class="form-group">
+    <label for="priceChangeCoefficientStdPerYearForItemsWithDecreasingPriceTendency">Price Change coefficient std per year for items with Decreasing price tendency</label>
+    <input th:field="*{priceChangeCoefficientStdPerYearForItemsWithDecreasingPriceTendency}" required class="form-control" type="number" id="priceChangeCoefficientStdPerYearForItemsWithDecreasingPriceTendency" name="priceChangeCoefficientStdPerYearForItemsWithIncreasingPriceTendency">
+  </div>
+  <br>
+  <div class="form-group">
+    <label for="priceChangeCoefficientStdPerYearForItemsWithDecreasingPriceTendency">Price Change coefficient std per year for items with Decreasing price tendency</label>
+    <input th:field="*{priceChangeCoefficientStdPerYearForItemsWithDecreasingPriceTendency}" required class="form-control" type="number" id="priceChangeCoefficientStdPerYearForItemsWithDecreasingPriceTendency" name="priceChangeCoefficientStdPerYearForItemsWithIncreasingPriceTendency">
+  </div>
+  <br>
+  <h2>Items with price between 0 - 100</h2>
+  <div class="form-group">
+    <label for="partOfItemsIn0to100">Part of items with price in range (0, 100></label>
+    <input th:field="*{partOfItemsIn0to100}" required class="form-control" type="number" id="partOfItemsIn0to100" name="partOfItemsIn0to100">
+  </div>
+  <br>
+  <div class="form-group">
+    <label for="firstItemCountLvl0to100">Number of items, from which 1.st discount applies</label>
+    <input th:field="*{firstItemCountLvl0to100}" required class="form-control" type="number" id="firstItemCountLvl0to100" name="firstItemCountLvl0to100">
+  </div>
+  <br>
+  <div class="form-group">
+    <label for="firstItemCountDiscountMeanLvl0to100">Mean of first discount</label>
+    <input th:field="*{firstItemCountDiscountMeanLvl0to100}" required class="form-control" type="number" id="firstItemCountDiscountMeanLvl0to100" name="firstItemCountDiscountMeanLvl0to100">
+  </div>
+  <br>
+  <div class="form-group">
+    <label for="firstItemCountDiscountStdLvl0to100">Std of first discount</label>
+    <input th:field="*{firstItemCountDiscountStdLvl0to100}" required class="form-control" type="number" id="firstItemCountDiscountStdLvl0to100" name="firstItemCountDiscountStdLvl0to100">
+  </div>
+  <br>
+  <div class="form-group">
+    <label for="secondItemCountLvl0to100">Number of items, from which 2.nd discount applies</label>
+    <input th:field="*{secondItemCountLvl0to100}" required class="form-control" type="number" id="secondItemCountLvl0to100" name="secondItemCountLvl0to100">
+  </div>
+  <br>
+  <div class="form-group">
+    <label for="secondItemCountDiscountMeanLvl0to100">Mean of second discount</label>
+    <input th:field="*{secondItemCountDiscountMeanLvl0to100}" required class="form-control" type="number" id="secondItemCountDiscountMeanLvl0to100" name="secondItemCountDiscountMeanLvl0to100">
+  </div>
+  <br>
+  <div class="form-group">
+    <label for="secondItemCountDiscountStdLvl0to100">Std of second discount</label>
+    <input th:field="*{secondItemCountDiscountStdLvl0to100}" required class="form-control" type="number" id="secondItemCountDiscountStdLvl0to100" name="secondItemCountDiscountStdLvl0to100">
+  </div>
+  <br>
+  <div class="form-group">
+    <label for="thirdItemCountLvl0to100">Number of items, from which 3.rd discount applies</label>
+    <input th:field="*{thirdItemCountLvl0to100}" required class="form-control" type="number" id="thirdItemCountLvl0to100" name="thirdItemCountLvl0to100">
+  </div>
+  <br>
+  <div class="form-group">
+    <label for="thirdItemCountDiscountMeanLvl0to100">Mean of third discount</label>
+    <input th:field="*{thirdItemCountDiscountMeanLvl0to100}" required class="form-control" type="number" id="thirdItemCountDiscountMeanLvl0to100" name="thirdItemCountDiscountMeanLvl0to100">
+  </div>
+  <br>
+  <div class="form-group">
+    <label for="thirdItemCountDiscountStdLvl0to100">Std of third discount</label>
+    <input th:field="*{thirdItemCountDiscountStdLvl0to100}" required class="form-control" type="number" id="thirdItemCountDiscountStdLvl0to100" name="thirdItemCountDiscountStdLvl0to100">
+  </div>
+  <br>
+
+
+
+
+
+
+
+  <h2>Items with price between 100 - 1_000</h2>
+  <div class="form-group">
+    <label for="partOfItemsIn100to1000">Part of items with price in range (100, 1_000></label>
+    <input th:field="*{partOfItemsIn100to1000}" required class="form-control" type="number" id="partOfItemsIn100to1000" name="partOfItemsIn100to1000">
+  </div>
+  <br>
+  <div class="form-group">
+    <label for="firstItemCountLvl100to1000">Number of items, from which 1.st discount applies</label>
+    <input th:field="*{firstItemCountLvl100to1000}" required class="form-control" type="number" id="firstItemCountLvl100to1000" name="firstItemCountLvl100to1000">
+  </div>
+  <br>
+  <div class="form-group">
+    <label for="firstItemCountDiscountMeanLvl100to1000">Mean of first discount</label>
+    <input th:field="*{firstItemCountDiscountMeanLvl100to1000}" required class="form-control" type="number" id="firstItemCountDiscountMeanLvl100to1000" name="firstItemCountDiscountMeanLvl100to1000">
+  </div>
+  <br>
+  <div class="form-group">
+    <label for="firstItemCountDiscountStdLvl100to1000">Std of first discount</label>
+    <input th:field="*{firstItemCountDiscountStdLvl100to1000}" required class="form-control" type="number" id="firstItemCountDiscountStdLvl100to1000" name="firstItemCountDiscountStdLvl100to1000">
+  </div>
+  <br>
+  <div class="form-group">
+    <label for="secondItemCountLvl100to1000">Number of items, from which 2.nd discount applies</label>
+    <input th:field="*{secondItemCountLvl100to1000}" required class="form-control" type="number" id="secondItemCountLvl100to1000" name="secondItemCountLvl100to1000">
+  </div>
+  <br>
+  <div class="form-group">
+    <label for="secondItemCountDiscountMeanLvl100to1000">Mean of second discount</label>
+    <input th:field="*{secondItemCountDiscountMeanLvl100to1000}" required class="form-control" type="number" id="secondItemCountDiscountMeanLvl100to1000" name="secondItemCountDiscountMeanLvl100to1000">
+  </div>
+  <br>
+  <div class="form-group">
+    <label for="secondItemCountDiscountStdLvl100to1000">Std of second discount</label>
+    <input th:field="*{secondItemCountDiscountStdLvl100to1000}" required class="form-control" type="number" id="secondItemCountDiscountStdLvl100to1000" name="secondItemCountDiscountStdLvl100to1000">
+  </div>
+  <br>
+  <div class="form-group">
+    <label for="thirdItemCountLvl100to1000">Number of items, from which 3.rd discount applies</label>
+    <input th:field="*{thirdItemCountLvl100to1000}" required class="form-control" type="number" id="thirdItemCountLvl100to1000" name="thirdItemCountLvl100to1000">
+  </div>
+  <br>
+  <div class="form-group">
+    <label for="thirdItemCountDiscountMeanLvl100to1000">Mean of third discount</label>
+    <input th:field="*{thirdItemCountDiscountMeanLvl100to1000}" required class="form-control" type="number" id="thirdItemCountDiscountMeanLvl100to1000" name="thirdItemCountDiscountMeanLvl100to1000">
+  </div>
+  <br>
+  <div class="form-group">
+    <label for="thirdItemCountDiscountStdLvl100to1000">Std of third discount</label>
+    <input th:field="*{thirdItemCountDiscountStdLvl100to1000}" required class="form-control" type="number" id="thirdItemCountDiscountStdLvl100to1000" name="thirdItemCountDiscountStdLvl100to1000">
+  </div>
+  <br>
+
+
+
+
+
+  <h2>Items with price between 1_000 - 10_000</h2>
+  <div class="form-group">
+    <label for="partOfItemsIn1000to10000">Part of items with price in range (1_000, 10_000></label>
+    <input th:field="*{partOfItemsIn1000to10000}" required class="form-control" type="number" id="partOfItemsIn1000to10000" name="partOfItemsIn1000to10000">
+  </div>
+  <br>
+  <div class="form-group">
+    <label for="firstItemCountLvl1000to10000">Number of items, from which 1.st discount applies</label>
+    <input th:field="*{firstItemCountLvl1000to10000}" required class="form-control" type="number" id="firstItemCountLvl1000to10000" name="firstItemCountLvl1000to10000">
+  </div>
+  <br>
+  <div class="form-group">
+    <label for="firstItemCountDiscountMeanLvl1000to10000">Mean of first discount</label>
+    <input th:field="*{firstItemCountDiscountMeanLvl1000to10000}" required class="form-control" type="number" id="firstItemCountDiscountMeanLvl1000to10000" name="firstItemCountDiscountMeanLvl1000to10000">
+  </div>
+  <br>
+  <div class="form-group">
+    <label for="firstItemCountDiscountStdLvl1000to10000">Std of first discount</label>
+    <input th:field="*{firstItemCountDiscountStdLvl1000to10000}" required class="form-control" type="number" id="firstItemCountDiscountStdLvl1000to10000" name="firstItemCountDiscountStdLvl1000to10000">
+  </div>
+  <br>
+  <div class="form-group">
+    <label for="secondItemCountLvl1000to10000">Number of items, from which 2.nd discount applies</label>
+    <input th:field="*{secondItemCountLvl1000to10000}" required class="form-control" type="number" id="secondItemCountLvl1000to10000" name="secondItemCountLvl1000to10000">
+  </div>
+  <br>
+  <div class="form-group">
+    <label for="secondItemCountDiscountMeanLvl1000to10000">Mean of second discount</label>
+    <input th:field="*{secondItemCountDiscountMeanLvl1000to10000}" required class="form-control" type="number" id="secondItemCountDiscountMeanLvl1000to10000" name="secondItemCountDiscountMeanLvl1000to10000">
+  </div>
+  <br>
+  <div class="form-group">
+    <label for="secondItemCountDiscountStdLvl1000to10000">Std of second discount</label>
+    <input th:field="*{secondItemCountDiscountStdLvl1000to10000}" required class="form-control" type="number" id="secondItemCountDiscountStdLvl1000to10000" name="secondItemCountDiscountStdLvl1000to10000">
+  </div>
+  <br>
+  <div class="form-group">
+    <label for="thirdItemCountLvl1000to10000">Number of items, from which 3.rd discount applies</label>
+    <input th:field="*{thirdItemCountLvl1000to10000}" required class="form-control" type="number" id="thirdItemCountLvl1000to10000" name="thirdItemCountLvl1000to10000">
+  </div>
+  <br>
+  <div class="form-group">
+    <label for="thirdItemCountDiscountMeanLvl1000to10000">Mean of third discount</label>
+    <input th:field="*{thirdItemCountDiscountMeanLvl1000to10000}" required class="form-control" type="number" id="thirdItemCountDiscountMeanLvl1000to10000" name="thirdItemCountDiscountMeanLvl1000to10000">
+  </div>
+  <br>
+  <div class="form-group">
+    <label for="thirdItemCountDiscountStdLvl1000to10000">Std of third discount</label>
+    <input th:field="*{thirdItemCountDiscountStdLvl1000to10000}" required class="form-control" type="number" id="thirdItemCountDiscountStdLvl1000to10000" name="thirdItemCountDiscountStdLvl1000to10000">
+  </div>
+  <br>
+
+
+
+
+
+
+
+  <h2>Items with price between 10_000 - 100_000</h2>
+  <div class="form-group">
+    <label for="partOfItemsIn10000to100000">Part of items with price in range (10_000, 100_000></label>
+    <input th:field="*{partOfItemsIn10000to100000}" required class="form-control" type="number" id="partOfItemsIn10000to100000" name="partOfItemsIn10000to100000">
+  </div>
+  <br>
+  <div class="form-group">
+    <label for="firstItemCountLvl10000to100000">Number of items, from which 1.st discount applies</label>
+    <input th:field="*{firstItemCountLvl10000to100000}" required class="form-control" type="number" id="firstItemCountLvl10000to100000" name="firstItemCountLvl10000to100000">
+  </div>
+  <br>
+  <div class="form-group">
+    <label for="firstItemCountDiscountMeanLvl10000to100000">Mean of first discount</label>
+    <input th:field="*{firstItemCountDiscountMeanLvl10000to100000}" required class="form-control" type="number" id="firstItemCountDiscountMeanLvl10000to100000" name="firstItemCountDiscountMeanLvl10000to100000">
+  </div>
+  <br>
+  <div class="form-group">
+    <label for="firstItemCountDiscountStdLvl10000to100000">Std of first discount</label>
+    <input th:field="*{firstItemCountDiscountStdLvl10000to100000}" required class="form-control" type="number" id="firstItemCountDiscountStdLvl10000to100000" name="firstItemCountDiscountStdLvl10000to100000">
+  </div>
+  <br>
+  <div class="form-group">
+    <label for="secondItemCountLvl10000to100000">Number of items, from which 2.nd discount applies</label>
+    <input th:field="*{secondItemCountLvl10000to100000}" required class="form-control" type="number" id="secondItemCountLvl10000to100000" name="secondItemCountLvl10000to100000">
+  </div>
+  <br>
+  <div class="form-group">
+    <label for="secondItemCountDiscountMeanLvl10000to100000">Mean of second discount</label>
+    <input th:field="*{secondItemCountDiscountMeanLvl10000to100000}" required class="form-control" type="number" id="secondItemCountDiscountMeanLvl10000to100000" name="secondItemCountDiscountMeanLvl10000to100000">
+  </div>
+  <br>
+  <div class="form-group">
+    <label for="secondItemCountDiscountStdLvl10000to100000">Std of second discount</label>
+    <input th:field="*{secondItemCountDiscountStdLvl10000to100000}" required class="form-control" type="number" id="secondItemCountDiscountStdLvl10000to100000" name="secondItemCountDiscountStdLvl10000to100000">
+  </div>
+  <br>
+  <div class="form-group">
+    <label for="thirdItemCountLvl10000to100000">Number of items, from which 3.rd discount applies</label>
+    <input th:field="*{thirdItemCountLvl10000to100000}" required class="form-control" type="number" id="thirdItemCountLvl10000to100000" name="thirdItemCountLvl10000to100000">
+  </div>
+  <br>
+  <div class="form-group">
+    <label for="thirdItemCountDiscountMeanLvl10000to100000">Mean of third discount</label>
+    <input th:field="*{thirdItemCountDiscountMeanLvl10000to100000}" required class="form-control" type="number" id="thirdItemCountDiscountMeanLvl10000to100000" name="thirdItemCountDiscountMeanLvl10000to100000">
+  </div>
+  <br>
+  <div class="form-group">
+    <label for="thirdItemCountDiscountStdLvl10000to100000">Std of third discount</label>
+    <input th:field="*{thirdItemCountDiscountStdLvl10000to100000}" required class="form-control" type="number" id="thirdItemCountDiscountStdLvl10000to100000" name="thirdItemCountDiscountStdLvl10000to100000">
+  </div>
+  <br>
+
+
+
+
+
+
+  <h2>Items with price between 100_000 - 1_000_000</h2>
+  <div class="form-group">
+    <label for="partOfItemsIn100000to1000000">Part of items with price in range (100_000, 1_000_000></label>
+    <input th:field="*{partOfItemsIn100000to1000000}" required class="form-control" type="number" id="partOfItemsIn100000to1000000" name="partOfItemsIn100000to1000000">
+  </div>
+  <br>
+  <div class="form-group">
+    <label for="firstItemCountLvl100000to1000000">Number of items, from which 1.st discount applies</label>
+    <input th:field="*{firstItemCountLvl100000to1000000}" required class="form-control" type="number" id="firstItemCountLvl100000to1000000" name="firstItemCountLvl100000to1000000">
+  </div>
+  <br>
+  <div class="form-group">
+    <label for="firstItemCountDiscountMeanLvl100000to1000000">Mean of first discount</label>
+    <input th:field="*{firstItemCountDiscountMeanLvl100000to1000000}" required class="form-control" type="number" id="firstItemCountDiscountMeanLvl100000to1000000" name="firstItemCountDiscountMeanLvl100000to1000000">
+  </div>
+  <br>
+  <div class="form-group">
+    <label for="firstItemCountDiscountStdLvl100000to1000000">Std of first discount</label>
+    <input th:field="*{firstItemCountDiscountStdLvl100000to1000000}" required class="form-control" type="number" id="firstItemCountDiscountStdLvl100000to1000000" name="firstItemCountDiscountStdLvl100000to1000000">
+  </div>
+  <br>
+  <div class="form-group">
+    <label for="secondItemCountLvl100000to1000000">Number of items, from which 2.nd discount applies</label>
+    <input th:field="*{secondItemCountLvl100000to1000000}" required class="form-control" type="number" id="secondItemCountLvl100000to1000000" name="secondItemCountLvl100000to1000000">
+  </div>
+  <br>
+  <div class="form-group">
+    <label for="secondItemCountDiscountMeanLvl100000to1000000">Mean of second discount</label>
+    <input th:field="*{secondItemCountDiscountMeanLvl100000to1000000}" required class="form-control" type="number" id="secondItemCountDiscountMeanLvl100000to1000000" name="secondItemCountDiscountMeanLvl100000to1000000">
+  </div>
+  <br>
+  <div class="form-group">
+    <label for="secondItemCountDiscountStdLvl100000to1000000">Std of second discount</label>
+    <input th:field="*{secondItemCountDiscountStdLvl100000to1000000}" required class="form-control" type="number" id="secondItemCountDiscountStdLvl100000to1000000" name="secondItemCountDiscountStdLvl100000to1000000">
+  </div>
+  <br>
+  <div class="form-group">
+    <label for="thirdItemCountLvl100000to1000000">Number of items, from which 3.rd discount applies</label>
+    <input th:field="*{thirdItemCountLvl100000to1000000}" required class="form-control" type="number" id="thirdItemCountLvl100000to1000000" name="thirdItemCountLvl100000to1000000">
+  </div>
+  <br>
+  <div class="form-group">
+    <label for="thirdItemCountDiscountMeanLvl100000to1000000">Mean of third discount</label>
+    <input th:field="*{thirdItemCountDiscountMeanLvl100000to1000000}" required class="form-control" type="number" id="thirdItemCountDiscountMeanLvl100000to1000000" name="thirdItemCountDiscountMeanLvl100000to1000000">
+  </div>
+  <br>
+  <div class="form-group">
+    <label for="thirdItemCountDiscountStdLvl100000to1000000">Std of third discount</label>
+    <input th:field="*{thirdItemCountDiscountStdLvl100000to1000000}" required class="form-control" type="number" id="thirdItemCountDiscountStdLvl100000to1000000" name="thirdItemCountDiscountStdLvl100000to1000000">
+  </div>
+  <br>
+  <div class="form-group">
+    <label for="numberOfCurrencies">Number of currencies </label>
+    <input th:field="*{numberOfCurrencies}" required class="form-control" type="number" id="numberOfCurrencies" name="numberOfCurrencies">
+  </div>
+  <br>
+  <div class="form-group">
+    <label for="suppliers">Number of suppliers</label>
+    <input th:field="*{numberOfSuppliers}" required class="form-control" type="number" id="suppliers" name="suppliers">
+  </div>
+  <br>
+  <div class="form-group">
+    <label for="priceListValidityInDays">Price lists validity in days</label>
+    <input th:field="*{priceListValidityInDays}" required class="form-control" type="number" id="priceListValidityInDays" name="priceListValidityInDays">
+  </div>
+  <br>
+  <div class="form-group">
+    <label for="numberOfPriceListPeriods">Number of Price Lists periods</label>
+    <input th:field="*{numberOfPriceListPeriods}" required class="form-control" type="number" id="numberOfPriceListPeriods" name="numberOfPriceListPeriods">
+  </div>
+  <br>
+  <div class="form-group">
+    <label for="probabilityOfHavingItemInPriceListPeriod">probability of having item in price List Period</label>
+    <input th:field="*{probabilityOfHavingItemInPriceListPeriod}" required class="form-control" type="number" id="probabilityOfHavingItemInPriceListPeriod" name="probabilityOfHavingItemInPriceListPeriod">
+  </div>
+  <br>
+  <div class="form-group">
+    <label for="leadTimeMean">Mean of lead time</label>
+    <input th:field="*{leadTimeMean}" required class="form-control" type="number" id="leadTimeMean" name="leadTimeMean">
+  </div>
+  <br>
+  <div class="form-group">
+    <label for="leadTimeStd">Std. dev of lead time</label>
+    <input th:field="*{leadTimeStd}" required class="form-control" type="number" id="leadTimeStd" name="leadTimeStd">
+  </div>
+  <br>
+
+
+
+
+
+
+
+
+  <input class="btn btn-primary" type="submit" name="submit" value="Submit data">
+  <br/>
+</form>
+
+</body>
+
+</html>

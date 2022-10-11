@@ -6,6 +6,9 @@ import java.time.Instant
 
 @Service
 class ValidationServiceImpl {
+    fun advancedDataGenerationFileControllerInputValidation(){
+
+    }
     fun independentFileControllerInputValidation(
         initialConsumption: String,
         lastConsumption: String,
